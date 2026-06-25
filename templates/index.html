@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Handwriting Neural Network</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>✍️ Handwriting Neural Network</h1>
+            <p class="subtitle">Gambar angka dan biarkan AI mengenalinya</p>
+        </header>
+
+        <main>
+            <div class="canvas-container">
+                <canvas id="drawingCanvas" width="600" height="600"></canvas>
+            </div>
+
+            <div class="controls">
+                <button id="clearBtn" class="btn btn-clear">
+                    <span class="btn-icon">🗑️</span>
+                    CLEAR
+                </button>
+                <button id="predictBtn" class="btn btn-predict">
+                    <span class="btn-icon">🧠</span>
+                    PREDICT
+                </button>
+            </div>
+
+            <div class="credit">idea by <span class="credit-text">Fathir</span></div>
+        </main>
+
+        <!-- Results Chart -->
+        <div class="results-container" id="resultsContainer">
+            <div class="result-header">
+                <h2>Hasil Prediksi</h2>
+                <p id="predictedDigit">-</p>
+            </div>
+            <div class="chart-wrapper">
+                <div class="chart" id="chart">
+                    <!-- Dynamic bars akan ditambah via JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

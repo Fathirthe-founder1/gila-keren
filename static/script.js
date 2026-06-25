@@ -116,6 +116,8 @@ clearBtn.addEventListener('click', () => {
 predictBtn.addEventListener('click', async () => {
     // Glow effect
     predictBtn.style.boxShadow = '0 0 30px #00b4d8, 0 0 60px rgba(0, 180, 216, 0.8)';
+    predictBtn.disabled = true;
+    predictBtn.textContent = '⏳ Loading...';
     
     // Get image dari canvas
     const imageData = canvas.toDataURL('image/png');
@@ -140,6 +142,10 @@ predictBtn.addEventListener('click', async () => {
     } catch (error) {
         alert('Error predicting: ' + error);
     }
+    
+    // Reset button
+    predictBtn.disabled = false;
+    predictBtn.innerHTML = '<span class="btn-icon">🧠</span>PREDICT';
     
     setTimeout(() => {
         predictBtn.style.boxShadow = '';
@@ -196,17 +202,6 @@ function displayResults(data) {
     setTimeout(() => {
         resultsContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }, 200);
-}
-
-// Loading state untuk predict button
-function setButtonLoading(btn, isLoading) {
-    if (isLoading) {
-        btn.disabled = true;
-        btn.style.opacity = '0.6';
-    } else {
-        btn.disabled = false;
-        btn.style.opacity = '1';
-    }
 }
 
 console.log('✅ Handwriting Neural Network loaded!');
